@@ -1,18 +1,19 @@
 #!/bin/bash
 
 name=`whoami`
+host=`hostname`
 
-I=`dpkg -s vim | grep "Status" ` #проверяем состояние пакета (dpkg) и ищем в выводе его статус (grep)
+I=`dpkg -s vim 2>/dev/null | grep "Status" ` #проверяем состояние пакета (dpkg) и ищем в выводе его статус (grep)
 if [[ -z "$I" ]] #проверяем что нашли строку со статусом (что строка не пуста)
 then
-    echo "Please install Vim " #выводим результат
-    exit 2
+    echo "Installing Vim..." #выводим результат
+    `sudo apt-get install vim -y 2>&1 1>/dev/null`
+    echo "Vim installed!"
 fi
-
-host=`hostname`
 
 `cp bashrc.template .bashrc`
 `cp vimrc.template vimrc`
+
 echo "Creating .bashrc   ......OK"
 echo "Creating vimrc     ......OK"
 
