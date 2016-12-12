@@ -19,7 +19,7 @@ case $- in
           C_END="\[\033[00m\]"
           if [ `whoami` = "root" ]; then C_USER=$C_RED; else C_USER=$C_GREEN; fi
               if [ `hostname` != "HNAME" ]; then C_HOST=$C_RED; else C_HOST=$C_GREEN; fi
-                  export PS1=$C_USER"\u"$C_CYAN"@"$C_HOST"\h "$C_YELLOW"\w "$C_MAGENTA":)"$C_END" "
+                  export PS1=$C_USER"\u"$C_CYAN"@"$C_HOST"\h "$C_YELLOW"\w "$C_MAGENTA":"$C_END" "
                   export EDITOR=vim
                   export LESS="-SR"
                   export HISTSIZE=1000
