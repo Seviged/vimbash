@@ -1,0 +1,70 @@
+set number
+" Включить подсветку синтаксиса
+ syntax on
+" " Поиск по набору текста (очень полезная функция)
+ set incsearch
+" " Подсвечивание поиска
+ set hlsearch
+" " умная зависимость от регистра %)
+ set ignorecase
+ set smartcase
+ "match errorMsg /[\t]/
+" " Кодировка текста по умолчанию
+set termencoding=utf8
+" " Включаем несовместимость настроек с Vi (ибо Vi нам и не понадобится).
+set nocompatible
+" " Показывать положение курсора всё время.
+set ruler
+" " Показывать незавершённые команды в статусбаре
+set showcmd
+" " Фолдинг по отсупам
+set foldenable
+set foldlevel=100
+set foldmethod=indent
+" " Выключаем надоедливый "звонок"
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+" " Поддержка мыши
+set mouse=r
+set mousemodel=popup
+" " Не выгружать буфер, когда переключаемся на другой
+" " Это позволяет редактировать несколько файлов в один и тот же момент без
+" необходимости сохранения каждый раз
+" " когда переключаешься между ними
+set hidden
+" " Скрыть панель в gui версии ибо она не нужна
+set guioptions-=T
+" " Сделать строку команд высотой в одну строку
+set ch=1
+" " Скрывать указатель мыши, когда печатаем
+set mousehide
+" " Включить автоотступы
+set autoindent
+" "Не переносить строки
+set nowrap
+" " Преобразование Таба в пробелы
+set expandtab
+" " Размер табуляции по умолчанию
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+" " Формат строки состояния
+ set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
+ set laststatus=2
+" " Включаем "умные" отступы ( например, авто отступ после {)
+set smartindent
+" " Отображение парных символов
+set showmatch
+" "set lines=50
+" "set columns=140
+" " Навигация с учетом русских символов
+set iskeyword=@,48-57,_,192-255
+" " Удаление символов бэкспэйсом в Windows
+set backspace=indent,eol,start
+set cursorline
+" "highlight CursorLine guibg=lightblue ctermbg=lightgray
+highlight CursorLine term=none cterm=none
+set history=200
+set wildmenu
+set list listchars=tab:→\ ,trail:·
+filetype plugin on

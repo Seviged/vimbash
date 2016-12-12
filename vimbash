@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if [[ `whoami` -ne "root" ]]
+then
+    echo "you must be as root"
+    exit 3
+fi
+
+if [[ -z "$1" ]]
+then
+    echo "you must enter your username as parameter"
+    exit 1
+else
+    name=$1
+fi
+
+I=`dpkg -s vim | grep "Status" ` #проверяем состояние пакета (dpkg) и ищем в выводе его статус (grep)
+if [[ -z "$I" ]] #проверяем что нашли строку со статусом (что строка не пуста)
+then
+    echo "please install Vim " #выводим результат
+    exit 2
+fi
+
+host=`hostname`
+
+`cp bashrc.template .bashrc`
+`cp vimrc.template vimrc`
+echo "creating .bashrc ...OK"
+echo "creating vimrc   ...OK"
+
+`sed -i "9s/WHOAMI/$1/" .bashrc`
+`sed -i "21s/HNAME/$host/" .bashrc`
+
+`sudo rm /home/$1/.bashrc`
+`sudo rm /etc/vim/vimrc`
+
+`sudo cp .bashrc /home/$1/.bashrc`
+`sudo cp vimrc /etc/vim/vimrc`
+
+`rm .bashrc`
+`rm vimrc`
+
+echo "job done, reboot you system"

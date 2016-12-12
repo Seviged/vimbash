@@ -1,0 +1,39 @@
+# .bashrc
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+          *) return;;
+          esac
+          umask 0022
+          export TERM="xterm-256color"
+          export HOME="/home/WHOAMI"
+          export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/usr/local/bin:/usr/local/sbin"
+          C_BLACK="\[\033[01;30m\]"
+          C_RED="\[\033[01;31m\]"
+          C_GREEN="\[\033[01;32m\]"
+          C_YELLOW="\[\033[01;33m\]"
+          C_BLUE="\[\033[01;34m\]"
+          C_MAGENTA="\[\033[01;35m\]"
+          C_CYAN="\[\033[01;36m\]"
+          C_WHITE="\[\033[01;37m\]"
+          C_END="\[\033[00m\]"
+          if [ `whoami` = "root" ]; then C_USER=$C_RED; else C_USER=$C_GREEN; fi
+              if [ `hostname` != "HNAME" ]; then C_HOST=$C_RED; else C_HOST=$C_GREEN; fi
+                  export PS1=$C_USER"\u"$C_CYAN"@"$C_HOST"\h "$C_YELLOW"\w "$C_MAGENTA":)"$C_END" "
+                  export EDITOR=vim
+                  export LESS="-SR"
+                  export HISTSIZE=1000
+                  export HISTCONTROL=ignoreboth
+                  shopt -s histappend
+                  shopt -s checkwinsize
+                  [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+                  [ -f /etc/bash_completion ] && . /etc/bash_completion
+                  [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
+                  alias cd.="cd ."
+                  alias cd..="cd .."
+                  alias ls="ls -F --color=auto"
+                  alias ll="ls -l"
+                  alias diff="colordiff"
+                  alias grep="grep --color"
+                  alias mysql="mysql -u root"
+                  alias ntp="sudo /etc/init.d/ntp stop; sudo ntpdate pool.ntp.org; sudo /etc/init.d/ntp start"
