@@ -13,7 +13,7 @@ fi
 
 `cp bashrc.template .bashrc`
 `cp vimrc.template vimrc`
-`cp screenrc.template screenrc`
+`cp screenrc.template .screenrc`
 
 echo "Creating .bashrc    ......OK"
 echo "Creating vimrc      ......OK"
@@ -28,6 +28,8 @@ echo "Creating .screenrc  ......OK"
 
 `sudo cp .bashrc /home/$name/.bashrc`
 `sudo cp .screenrc /home/$name/.screenrc`
+`sudo cp kill_ipch.sh /home/$name/kill_ipch.sh`
+`sudo cp clearscreen /home/$name/clearscreen`
 `sudo cp vimrc /etc/vim/vimrc`
 
 `rm .bashrc`
