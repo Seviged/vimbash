@@ -13,20 +13,25 @@ fi
 
 `cp bashrc.template .bashrc`
 `cp vimrc.template vimrc`
+`cp screenrc.template screenrc`
 
-echo "Creating .bashrc   ......OK"
-echo "Creating vimrc     ......OK"
+echo "Creating .bashrc    ......OK"
+echo "Creating vimrc      ......OK"
+echo "Creating .screenrc  ......OK"
 
 `sed -i "9s/WHOAMI/$name/" .bashrc`
 `sed -i "21s/HNAME/$host/" .bashrc`
 
 `sudo rm /home/$name/.bashrc`
+`sudo rm /home/$name/.screenrc`
 `sudo rm /etc/vim/vimrc`
 
 `sudo cp .bashrc /home/$name/.bashrc`
+`sudo cp .screenrc /home/$name/.screenrc`
 `sudo cp vimrc /etc/vim/vimrc`
 
 `rm .bashrc`
 `rm vimrc`
+`rm .screenrc`
 
 echo "Done! Reboot you system"
