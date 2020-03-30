@@ -6,5 +6,5 @@
     st = status -uno
     br = branch
 [user]
-    email = roman.zinich@expertek.ru
-    name = Roman Zinich
+    email = example@mail.com
+    name = Vasya Pupkin
